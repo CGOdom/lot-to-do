@@ -5,15 +5,15 @@ const TodoList = ({ todos, deleteItem, toggleComplete }) => {
   return (
     <ListGroup className="mt-4">
       {todos.map((todo) => (
-        <ListGroup.Item key={todo.id} className="d-flex justify-content-between align-items-center">
+        <ListGroup.Item key={todo.id} className="d-flex justify-content-between align-items-center py-3">
           <div className="d-flex align-items-center">
             <Form.Check 
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleComplete(todo.id)}
-              className="mr-2"
+              className="me-3"
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none', flex: 1 }}>
               {todo.text}
             </span>
           </div>
