@@ -24,11 +24,17 @@ const Todo = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const toggleComplete = (id) => {
+    setTodos(todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
   return (
     <Container className="mt-4">
       <h2>Todo List</h2>
       <TodoForm addItem={addItem} />
-      <TodoList todos={todos} deleteItem={deleteItem} />
+      <TodoList todos={todos} deleteItem={deleteItem} toggleComplete={toggleComplete} />
     </Container>
   );
 };
