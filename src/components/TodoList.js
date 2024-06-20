@@ -6,7 +6,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete }) => {
     <ListGroup className="mt-4">
       {todos.map((todo) => (
         <ListGroup.Item key={todo.id} className="d-flex justify-content-between align-items-center">
-          <div>
+          <div className="d-flex align-items-center">
             <Form.Check 
               type="checkbox"
               checked={todo.completed}
