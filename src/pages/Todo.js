@@ -1,55 +1,36 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, ListGroup } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
+import { Container } from 'react-bootstrap';
+import TodoForm from '../components/TodoForm';
+import TodoList from '../components/TodoList';
 
 const Todo = () => {
-  const [todos, setTodos] = useState([]);
-  const [task, setTask] = useState('');
+  const [todos, setTodos] = useState(getInitialState());
 
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (task.trim()) {
-      setTodos([...todos, { text: task, completed: false }]);
-      setTask('');
-    }
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  function getInitialState() {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  }
+
+  const addItem = (text) => {
+    setTodos([...todos, { id: nanoid(), text, completed: false }]);
   };
 
-  const toggleComplete = (index) => {
-    const newTodos = todos.map((todo, i) =>
-      i === index ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(newTodos);
+  const deleteItem = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <Container className="mt-4">
       <h2>Todo List</h2>
-      <Form onSubmit={addTodo}>
-        <Form.Group controlId="formTask">
-          <Form.Label>New Task</Form.Label>
-          <Form.Control
-            type="text"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit" className="mt-3">
-          Add Task
-        </Button>
-      </Form>
-      <ListGroup className="mt-4">
-        {todos.map((todo, index) => (
-          <ListGroup.Item
-            key={index}
-            onClick={() => toggleComplete(index)}
-            style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-          >
-            {todo.text}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <TodoForm addItem={addItem} />
+      <TodoList todos={todos} deleteItem={deleteItem} />
     </Container>
   );
-}
+};
 
 export default Todo;
