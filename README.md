@@ -1,5 +1,4 @@
-Hosting Link:  
-
+Hosting Link: https://cgodom.github.io/lot-to-do/
 
 
 User Types:
@@ -39,3 +38,51 @@ User Story: As a homemaker, I want to mark tasks as 'To-Do' or 'Done' so that I 
 
 
 These user stories provide a comprehensive understanding of the diverse needs and goals of different user types, guiding the development of a versatile and user-friendly To-Do List application.
+
+
+
+Wireframe Prototypes:
+
+1. HOME PAGE:
++-------------------------------------------------+
+|    Logo    [Home] [To-Do List] [Contact]        |
++-------------------------------------------------+
+|                Welcome to Our App               |
+|        Manage your tasks efficiently and        |
+|               stay organized!                   |
+|                                                 |
+|                [Get Started]                    |
++-------------------------------------------------+
+|                     Footer                      |
++-------------------------------------------------+
+
+
+2. LIST PAGE:
++-------------------------------------------------+
+|                    To-Do List                   |
++-------------------------------------------------+
+| [All] [To-do] [Done]                            |
++-------------------------------------------------+
+| + Add New To-Do Item                            |
+|  [___________________________________] [Add]    |
++-------------------------------------------------+
+| - To-Do Item 1      [Edit] [Delete] [Complete]  |
+| - To-Do Item 2      [Edit] [Delete] [Complete]  |
+| - To-Do Item 3      [Edit] [Delete] [Complete]  |
+| - To-Do Item 4      [Edit] [Delete] [Complete]  |
++-------------------------------------------------+
+
+
+3. CONTACT PAGE:
++-------------------------------------------------+
+|                   Contact Us                    |
++-------------------------------------------------+
+| First Name:  [_________________________]        |
+| Last Name:   [_________________________]        |
+| Email:       [_________________________]        |
+| Comments:    [_________________________]        |
+|              [_________________________]        |
+|              [_________________________]        |
++-------------------------------------------------+
+| [Submit]                                        |
++-------------------------------------------------+
