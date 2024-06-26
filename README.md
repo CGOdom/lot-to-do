@@ -41,7 +41,64 @@ These user stories provide a comprehensive understanding of the diverse needs an
 
 
 
+State Tree Prototype:
+
+
++-----------------------------------+
+|               State               |
++-----------------------------------+
+|                                   |
+|   +---------------------------+   |
+|   |          todos            |   |
+|   +---------------------------+   |
+|   |  byId                     |   |
+|   |   +-------------------+   |   |
+|   |   |  1: {             |   |   |
+|   |   |     id: '1',      |   |   |
+|   |   |     text: 'Buy    |   |   |
+|   |   |     groceries',   |   |   |
+|   |   |     completed:    |   |   |
+|   |   |     false         |   |   |
+|   |   |  },               |   |   |
+|   |   |  2: {             |   |   |
+|   |   |     id: '2',      |   |   |
+|   |   |     text: 'Finish |   |   |
+|   |   |     project       |   |   |
+|   |   |     report',      |   |   |
+|   |   |     completed:    |   |   |
+|   |   |     false         |   |   |
+|   |   |  }                |   |   |
+|   |   +-------------------+   |   |
+|   |  allIds: ['1', '2']        |   |
+|   +---------------------------+   |
+|                                   |
+|   +---------------------------+   |
+|   |         filter            |   |
+|   +---------------------------+   |
+|   |           all             |   |
+|   +---------------------------+   |
+|                                   |
+|   +---------------------------+   |
+|   |           ui              |   |
+|   +---------------------------+   |
+|   |   loading: false          |   |
+|   |   error: null             |   |
+|   +---------------------------+   |
+|                                   |
++-----------------------------------+
+
+Explanation:
+
+1. todos:
+    - byId: An object where each key is a todo ID and the value is the todo item.
+    - allIds: An array of all todo IDs for easy access.
+2. filter: The current filter applied to the to-do list (e.g., all, todo, done).
+3. ui: Contains UI-related states such as loading status and error messages.
+
+
+
 Wireframe Prototypes:
+
 
 1. HOME PAGE:
 +-------------------------------------------------+
