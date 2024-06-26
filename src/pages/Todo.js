@@ -39,7 +39,7 @@ const Todo = () => {
 
   return (
     <Container className="mt-4">
-      <h2>Todo List</h2>
+      <h2>To-Do List</h2>
       <ButtonGroup className="mb-3">
         <Button variant={filter === 'all' ? 'primary' : 'secondary'} onClick={() => setFilter('all')}>All</Button>
         <Button variant={filter === 'todo' ? 'primary' : 'secondary'} onClick={() => setFilter('todo')}>To-do</Button>
