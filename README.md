@@ -1,4 +1,40 @@
+Project 3 - Lot-To-Do
+
+
 Hosting Link: https://cgodom.github.io/lot-to-do/
+
+
+Name: Caden Odom
+
+
+Overview/Description of the Project: 
+
+This is a To-Do List application that allows users to manage their tasks efficiently. Users can add, edit, delete, and filter tasks. The application provides a clean and modern interface with features like marking tasks as completed and filtering tasks based on their status (all, to-do, done).
+
+
+How to Use It:
+
+1. Adding a Task: Use the input field to type a new task and click the "Add" button.
+2. Marking a Task as Completed: Click the checkbox button next to a task to mark it as completed.
+3. Deleting a Task: Click the "Delete" button next to a task to remove it from the list.
+Filtering Tasks: Use the filter buttons (All, To-do, Done) to view tasks based on their completion status.
+
+
+Technologies Used:
+
+- HTML
+- CSS
+- JavaScript
+- React
+- Bootstrap
+
+
+Ideas for Future Improvement:
+
+1. User Authentication: Implement user authentication to allow multiple users to manage their own to-do lists.
+2. Due Dates and Reminders: Add functionality to set due dates for tasks and send reminders.
+3. Task Categories: Introduce categories or tags for tasks to help users organize their to-dos more effectively.
+
 
 
 User Types:
