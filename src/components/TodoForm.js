@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
 
-const TodoForm = ({ addItem }) => {
-  const [task, setTask] = useState('');
+const TodoForm = ({ onAddTodo }) => {
+  const [text, setText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.trim()) {
-      addItem(task);
-      setTask('');
+    if (text.trim()) {
+      onAddTodo(text);
+      setText('');
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formTask">
-        <Form.Label>New Task</Form.Label>
-        <Form.Control
-          type="text"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit" className="mt-3">
-        Add Task
-      </Button>
-    </Form>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Add new todo"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button type="submit" className="btn btn-primary mt-2">Add</button>
+    </form>
   );
 };
 
