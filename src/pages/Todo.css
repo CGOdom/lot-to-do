@@ -1,34 +1,123 @@
 /* Todo.css */
 
+/* Dark Mode Styling */
 body {
-    background-color: #f8f9fa;
-  }
-  
-  h2 {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Header Styling */
+h2 {
     font-family: 'Arial', sans-serif;
     font-weight: bold;
-    color: #343a40;
-  }
-  
-  .card {
+    color: #ffffff;
+}
+
+/* Card Styling */
+.card {
     border-radius: 15px;
     border: none;
-  }
-  
-  .card-body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.card-body {
     padding: 2rem;
-  }
-  
-  .btn-group .btn {
+}
+
+/* Button Group Styling */
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-group .btn {
     border-radius: 10px;
-  }
-  
-  .btn-primary {
+    margin: 0 5px;
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-group .btn-all {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-group .btn-todo {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-group .btn-done {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-group .btn-all:hover {
+    background-color: #0056b3;
+}
+
+.btn-group .btn-todo:hover {
+    background-color: #0d6efd;
+}
+
+.btn-group .btn-done:hover {
+    background-color: #218838;
+}
+
+/* Form Control Styling */
+.form-control {
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+.form-control:focus {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border-color: #007bff;
+}
+
+/* Button Styling */
+.btn-primary {
     background-color: #007bff;
     border: none;
-  }
-  
-  .btn-primary:hover {
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
-  }
-  
+}
+
+/* To-Do Item Styling */
+.todo-item {
+    background-color: #2b2b2b;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-item.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    appearance: none;
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-checkbox:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}
