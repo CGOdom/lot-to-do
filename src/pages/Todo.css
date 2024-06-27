@@ -1,34 +1,157 @@
-/* Todo.css */
-
+/* Dark Mode Styling */
 body {
-    background-color: #f8f9fa;
-  }
-  
-  h2 {
+    background-color: #121212;
+    color: #e0e0e0;
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+h2 {
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    color: #1c3650;
-  }
-  
-  .card {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Card Styling */
+.card {
     border-radius: 15px;
     border: none;
-  }
-  
-  .card-body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
     padding: 2rem;
-  }
-  
-  .btn-group .btn {
+}
+
+/* Button Group Styling */
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn-group .btn {
     border-radius: 10px;
-  }
-  
-  .btn-primary {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-group .btn-all {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-group .btn-todo {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-group .btn-done {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-group .btn-all:hover {
+    background-color: #0056b3;
+}
+
+.btn-group .btn-todo:hover {
+    background-color: #117a8b;
+}
+
+.btn-group .btn-done:hover {
+    background-color: #1e7e34;
+}
+
+/* Form Control Styling */
+.form-control {
+    background-color: #2b2b2b;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border-color: #007bff;
+}
+
+/* Button Styling */
+.btn-primary {
     background-color: #007bff;
     border: none;
-  }
-  
-  .btn-primary:hover {
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
-  }
-  
+}
+
+/* To-Do List Styling */
+.todo-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* To-Do Item Styling */
+.todo-item {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    width: calc(33% - 20px); /* Adjust the width as needed */
+    transition: background-color 0.3s ease;
+}
+
+.todo-item:hover {
+    background-color: #f0f0f0;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    appearance: none;
+    background-color: #2b2b2b;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.custom-checkbox:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.custom-checkbox:checked::before {
+    content: '✔';
+    display: block;
+    text-align: center;
+}
