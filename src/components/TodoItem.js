@@ -10,12 +10,4 @@ const TodoItem = ({ todo, onToggleComplete, onDelete }) => (
   </div>
 );
 
-const TodoList = ({ todos, onToggleComplete, onDelete }) => (
-  <div>
-    {todos.map((todo) => (
-      <TodoItem key={todo.id} todo={todo} onToggleComplete={onToggleComplete} onDelete={onDelete} />
-    ))}
-  </div>
-);
-
-export default TodoList;
+export default TodoItem;
