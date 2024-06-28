@@ -1,34 +1,52 @@
-/* Todo.css */
+/* Two-column layout for the todo list */
+.todo-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 
-body {
-    background-color: #f8f9fa;
-  }
-  
-  h2 {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    color: #1c3650;
-  }
-  
-  .card {
-    border-radius: 15px;
-    border: none;
-  }
-  
-  .card-body {
-    padding: 2rem;
-  }
-  
-  .btn-group .btn {
-    border-radius: 10px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
+/* Style adjustments for the list items */
+.todo-item {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.todo-item:hover {
+  background-color: #f0f0f0;
+}
+
+.todo-item.completed span.todo-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  appearance: none;
+  background-color: #2b2b2b;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  color: #fff;
+}
+
+.custom-checkbox:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.custom-checkbox:checked::before {
+  content: '✔';
+  display: block;
+  text-align: center;
+}
