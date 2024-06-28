@@ -47,7 +47,7 @@ const Todo = () => {
               <h2 className="mb-4 text-center">To-Do List</h2>
               <ButtonGroup className="mb-3 w-100">
                 <Button variant={filter === 'all' ? 'primary' : 'secondary'} onClick={() => setFilter('all')}>All</Button>
-                <Button variant={filter === 'todo' ? 'primary' : 'secondary'} onClick={() => setFilter('todo')}>To-do</Button>
+                <Button variant={filter === 'todo' ? 'primary' : 'secondary'} onClick={() => setFilter('todo')}>To-Do</Button>
                 <Button variant={filter === 'done' ? 'primary' : 'secondary'} onClick={() => setFilter('done')}>Done</Button>
               </ButtonGroup>
               <TodoForm addItem={addItem} />
