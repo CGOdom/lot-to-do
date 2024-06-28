@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MyNavbar from './components/Navbar';
 import Todo from './pages/Todo';
 import Contact from './pages/Contact';
+import './App.css'; // Import app styles
 
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className="App">
         <MyNavbar />
-        <Routes>
-          <Route path="/" element={<Todo />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Todo />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
