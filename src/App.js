@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import MyNavbar from './components/Navbar';
 import Todo from './pages/Todo';
 import Contact from './pages/Contact';
@@ -15,15 +15,28 @@ const App = () => {
     document.body.classList.toggle('bg-light-mode');
   };
 
+  const RedirectToTodo = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+      if (new URLSearchParams(location.search).get('redirect') === 'true') {
+        window.history.replaceState({}, document.title, '/list');
+      }
+    }, [location]);
+
+    return <Navigate to="/list" />;
+  };
+
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div className={`App ${darkMode ? 'bg-dark-mode' : 'bg-light-mode'}`}>
         <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<Navigate to="/todo" />} />
-            <Route path="/todo" element={<Todo darkMode={darkMode} />} />
+            <Route path="/" element={<Navigate to="/list" />} />
+            <Route path="/list" element={<Todo darkMode={darkMode} />} />
             <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+            <Route path="*" element={<RedirectToTodo />} />
           </Routes>
         </div>
       </div>
