@@ -8,14 +8,14 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
     <Container className={`todo-list mt-4 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row>
         {todos.map((todo, index) => {
-          let colClass = "col-12"; // Default to full width
+          let colClass = "col-12"; 
 
           if (todos.length === 2) {
-            colClass = "col-md-6"; // Two items, half width each on medium and larger screens
+            colClass = "col-md-6"; 
           } else if (todos.length === 3) {
-            colClass = index < 2 ? "col-md-6" : "col-12"; // First two items half width, last item full width
+            colClass = index < 2 ? "col-md-6" : "col-12"; 
           } else if (todos.length >= 4) {
-            colClass = "col-md-6"; // Four or more items, each item half width on medium and larger screens
+            colClass = "col-md-6"; 
           }
 
           const itemClass = todo.completed
@@ -41,7 +41,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
                     checked={todo.completed}
                     onChange={() => toggleComplete(todo.id)}
                     className="me-3 custom-checkbox"
-                    style={{ transform: 'scale(1.5)' }} // Increase checkbox size
+                    style={{ transform: 'scale(1.5)' }} 
                   />
                   <span className={itemClass}>
                     {todo.text}

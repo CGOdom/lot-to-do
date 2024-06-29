@@ -69,8 +69,8 @@ body {
 }
 
 .custom-checkbox .form-check-input:checked {
-  background-color: #0d6efd; /* Bootstrap primary color */
-  border-color: #0d6efd; /* Bootstrap primary color */
+  background-color: #0d6efd; 
+  border-color: #0d6efd; 
 }
 
 .custom-checkbox .form-check-input:focus {
@@ -82,8 +82,8 @@ body {
 .completed-item {
   color: gray;
   text-decoration: line-through;
-  text-decoration-color: #0b5ed7; /* Darker blue */
-  text-decoration-thickness: 4px; /* Bolder strikethrough */
+  text-decoration-color: #0b5ed7; 
+  text-decoration-thickness: 4px; 
 }
 
 /* Text color for uncompleted items */

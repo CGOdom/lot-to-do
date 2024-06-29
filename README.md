@@ -14,23 +14,23 @@ The Task Management App is a web application designed to help users manage their
 
 # User Types and User Stories:
 
-1. # Busy Professional
-- **Who**: Busy Professional
-- **What**: Needs to manage multiple work tasks efficiently.
-- **Why**: To stay organized and ensure no tasks are forgotten.
-- **User Story**: As a busy professional, I want to add new to-do items quickly so that I can immediately capture tasks as they come up.
+  # Busy Professional
+  - **Who**: Busy Professional
+  - **What**: Needs to manage multiple work tasks efficiently.
+  - **Why**: To stay organized and ensure no tasks are forgotten.
+  - **User Story**: As a busy professional, I want to add new to-do items quickly so that I can immediately capture tasks as they come up.
 
-2. # Student
-- **Who**: Student
-- **What**: Needs to track assignments and study schedules.
-- **Why**: To manage academic responsibilities and improve productivity.
-- **User Story**: As a student, I want to add to-do items for my classes so that I can keep track of my assignments and exams.
+  # Student
+  - **Who**: Student
+  - **What**: Needs to track assignments and study schedules.
+  - **Why**: To manage academic responsibilities and improve productivity.
+  - **User Story**: As a student, I want to add to-do items for my classes so that I can keep track of my assignments and exams.
 
-3. # Homemaker
-- **Who**: Homemaker
-- **What**: Needs to manage household chores and family schedules.
-- **Why**: To ensure all household tasks are completed and family members are coordinated.
-- **User Story**: As a homemaker, I want to mark tasks as 'To-Do' or 'Done' so that I can visually track my progress.
+  # Homemaker
+  - **Who**: Homemaker
+  - **What**: Needs to manage household chores and family schedules.
+  - **Why**: To ensure all household tasks are completed and family members are coordinated.
+  - **User Story**: As a homemaker, I want to mark tasks as 'To-Do' or 'Done' so that I can visually track my progress.
 
 
 # How to Use:
@@ -49,16 +49,67 @@ The Task Management App is a web application designed to help users manage their
   - **Task Prioritization**: Users can set priorities for tasks, helping them focus on the most important items.
   - **Reminders and Notifications**: Users receive reminders and notifications for upcoming deadlines, important tasks, and pending tasks.
 
+
 # Project Structure:
-- # src/
-  - # components/
-    - **MyNavbar.js** - Contains the Navbar component.
-    - **TaskList.js** - Container component for the task list.
-    - **TaskListView.js** - Presentational component for displaying the list of tasks.
-    - **TaskItem.js** - Presentational component for individual task items.
-    - **TaskForm.js** - Container component for the task form.
-    - **TaskFormView.js** - Presentational component for the task form UI.
-    - **Other components...**
-- # App.js:
-(Main application file)
-- # Other files...
+
+  # Container Components:
+  - **App.js**
+      - Manages the overall application state and routing.
+      - Coordinates the rendering of different views based on the route.
+  - **TodoList.js**
+      - Manages the state and logic for displaying the todo list.
+      - Handles fetching tasks and passing them to the TodoList component.
+  - **TodoForm.js**
+      - Manages the state and logic for adding or editing todos.
+      - Handles form submissions, including adding or updating todos.
+
+  # Presentational Components:
+  - **Navbar.js**
+      - Displays the navigation bar with links to different parts of the application.
+  - **TodoList.js**
+      - Renders a list of todos.
+      - Receives the todo data as props from the container component.
+  - **TodoForm.js**
+      - Renders the form for adding or editing todos.
+      - Receives form data and handlers as props from the container component.
+  - **Contact.js**
+      - Displays the contact page content.
+
+
+
+# State Tree:
+
+  # Root State
+  - **app**
+    - **navbar**
+      - **currentRoute**: string
+    - **todos**
+      - **todoList**: array of todo objects
+      - **loading**: boolean
+      - **error**: string or null
+    - **todoForm**
+      - **currentTodo**: todo object or null
+      - **formState**: object (fields for the form like title, description, etc.)
+      - **isSubmitting**: boolean
+      - **error**: string or null
+
+
+# Detailed State Breakdown:
+
+  - **app**
+    - **navbar**
+      - **currentRoute**: Manages the current route to determine which component to render.
+    - **todos**
+      - **todoList**: An array of todo objects fetched from the server.
+      - **loading**: A boolean indicating if the todos are currently being fetched.
+      - **error**: Stores any error message that occurs during fetching.
+    - **todoForm**
+      - **currentTodo**: The todo object currently being edited or null if creating a new todo.
+      - **formState**: Stores the current state of the form fields.
+        - **title**: string
+        - **description**: string
+        - **dueDate**: string
+        - **priority**: string
+      - **isSubmitting**: A boolean indicating if the form is currently being submitted.
+      - **error**: Stores any error message that occurs during form submission
+      

@@ -40,14 +40,11 @@ h2 {
 /* Dark mode placeholder color */
 .bg-dark .form-control::placeholder {
   color: #ccc;
-  /* Lighter color for better visibility */
 }
 
 .bg-dark .form-control {
   background-color: #343a40;
-  /* Ensure the background of the input is dark */
   color: #fff;
-  /* Ensure the text color is white */
 }
 
 .text-white {
