@@ -1,20 +1,13 @@
 import React from 'react';
 import { Navbar, Nav, Container, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import logo from './Images/todologo.png'; // Make sure the path is correct
 
 const MyNavbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <Navbar bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>
-            <img
-              src={logo}
-              alt="Lot-To-Do Logo"
-              style={{ height: '40px' }} // Adjust the height as needed
-            />
-          </Navbar.Brand>
+          <Navbar.Brand>Lot-To-Do</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
