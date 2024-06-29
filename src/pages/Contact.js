@@ -29,7 +29,7 @@ const Contact = ({ darkMode }) => {
     e.preventDefault();
     setStatus('Sending...');
 
-    const response = await fetch('https://formspree.io/f/{form_id}', {
+    const response = await fetch('https://formspree.io/f/mkgwnwwb', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
