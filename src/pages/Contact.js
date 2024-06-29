@@ -9,6 +9,7 @@ const Contact = ({ darkMode }) => {
     email: '',
     comments: ''
   });
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     document.body.classList.add('bg-dark');
@@ -21,10 +22,34 @@ const Contact = ({ darkMode }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form data:', formData);
+    setStatus('Sending...');
+    
+    const response = await fetch('https://formspree.io/f/mkgwnwwb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        comments: formData.comments
+      })
+    });
+
+    if (response.ok) {
+      setStatus('Thank you for your message!');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        comments: ''
+      });
+    } else {
+      setStatus('Oops! There was a problem submitting your form.');
+    }
   };
 
   return (
@@ -87,6 +112,7 @@ const Contact = ({ darkMode }) => {
                   Submit
                 </Button>
               </Form>
+              {status && <p className="mt-3 text-center">{status}</p>}
             </Card.Body>
           </Card>
         </Col>
