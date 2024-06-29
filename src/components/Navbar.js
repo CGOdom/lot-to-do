@@ -6,13 +6,21 @@ const MyNavbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <Navbar bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
       <Container>
-        <LinkContainer to="/">
-          <Navbar.Brand>Lot-To-Do</Navbar.Brand>
+        <LinkContainer to="/todo">
+          <Navbar.Brand>
+            <img
+              src={`${process.env.PUBLIC_URL}/Images/todologo.png`}
+              alt="Lot-To-Do Logo"
+              width="45"
+              height="45"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <LinkContainer to="/">
+            <LinkContainer to="/todo">
               <Nav.Link>List</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/contact">
