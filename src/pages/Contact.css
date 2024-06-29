@@ -1,35 +1,47 @@
 /* Contact.css */
 
 body {
-    background-color: #f8f9fa;
-  }
-  
-  h2 {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    color: #343a40;
-  }
-  
-  .card {
-    border-radius: 15px;
-    border: none;
-  }
-  
-  .card-body {
-    padding: 2rem;
-  }
-  
-  .form-control {
-    border-radius: 10px;
-  }
-  
-  .btn-primary {
-    border-radius: 10px;
-    background-color: #007bff;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
+  background-color: #f8f9fa;
+}
+
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  border-radius: 10px;
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Dark mode placeholder color */
+.bg-dark .form-control::placeholder {
+  color: #ccc;
+  /* Lighter color for better visibility */
+}
+
+.bg-dark .form-control {
+  background-color: #343a40;
+  /* Ensure the background of the input is dark */
+  color: #fff;
+  /* Ensure the text color is white */
+}

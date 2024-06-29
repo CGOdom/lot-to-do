@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
-import { Container, Button, ButtonGroup, Card, Row, Col } from 'react-bootstrap';
+import { Container, Form, Card, Row, Col, Button } from 'react-bootstrap';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 import './Todo.css';
 
 const Todo = ({ darkMode }) => {
   const [todos, setTodos] = useState(getInitialState());
-  const [filter, setFilter] = useState('all');
+  const [showTodo, setShowTodo] = useState(true);
+  const [showDone, setShowDone] = useState(true);
+  const [hasCompletedItems, setHasCompletedItems] = useState(false);
+  const [hasUncompletedItems, setHasUncompletedItems] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
+    setHasCompletedItems(todos.some(todo => todo.completed));
+    setHasUncompletedItems(todos.some(todo => !todo.completed));
   }, [todos]);
+
+  useEffect(() => {
+    document.body.classList.add('bg-dark');
+    return () => {
+      document.body.classList.remove('bg-dark');
+    };
+  }, []);
 
   function getInitialState() {
     const savedTodos = localStorage.getItem('todos');
@@ -19,7 +31,9 @@ const Todo = ({ darkMode }) => {
   }
 
   const addItem = (text) => {
-    setTodos([...todos, { id: nanoid(), text, completed: false }]);
+    setShowTodo(true);
+    setShowDone(true);
+    setTodos([{ id: nanoid(), text, completed: false }, ...todos]);
   };
 
   const deleteItem = (id) => {
@@ -32,26 +46,101 @@ const Todo = ({ darkMode }) => {
     ));
   };
 
+  const clearCompletedItems = () => {
+    setTodos(todos.filter(todo => !todo.completed));
+  };
+
+  const handleToggleTodo = () => {
+    setShowTodo(prev => {
+      const newState = !prev;
+      if (!newState && !showDone) {
+        setShowDone(true);
+      }
+      return newState;
+    });
+  };
+
+  const handleToggleDone = () => {
+    setShowDone(prev => {
+      const newState = !prev;
+      if (!newState && !showTodo) {
+        setShowTodo(true);
+      }
+      return newState;
+    });
+  };
+
   const filteredTodos = todos.filter(todo => {
-    if (filter === 'todo') return !todo.completed;
-    if (filter === 'done') return todo.completed;
+    if (!showTodo && !todo.completed) return false;
+    if (!showDone && todo.completed) return false;
     return true;
   });
 
+  useEffect(() => {
+    if (hasUncompletedItems && !hasCompletedItems) {
+      setShowTodo(true);
+      setShowDone(false);
+    } else if (hasCompletedItems && !hasUncompletedItems) {
+      setShowTodo(false);
+      setShowDone(true);
+    } else {
+      setShowTodo(true);
+      setShowDone(true);
+    }
+  }, [hasCompletedItems, hasUncompletedItems]);
+
   return (
-    <Container className={`mt-5 ${darkMode ? 'bg-dark text-white' : ''}`}>
+    <Container fluid className={`pt-3 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row className="justify-content-center">
         <Col md={8}>
           <Card className={`p-4 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
             <Card.Body>
-              <h2 className="mb-4 text-center">To-Do List</h2>
-              <ButtonGroup className="mb-3 w-100">
-                <Button variant={filter === 'all' ? 'primary' : 'secondary'} onClick={() => setFilter('all')}>All</Button>
-                <Button variant={filter === 'todo' ? 'primary' : 'secondary'} onClick={() => setFilter('todo')}>To-Do</Button>
-                <Button variant={filter === 'done' ? 'primary' : 'secondary'} onClick={() => setFilter('done')}>Done</Button>
-              </ButtonGroup>
               <TodoForm addItem={addItem} />
-              <TodoList todos={filteredTodos} deleteItem={deleteItem} toggleComplete={toggleComplete} darkMode={darkMode} />
+              {hasCompletedItems && hasUncompletedItems && (
+                <Form className="mt-0">
+                  <Row className="justify-content-center">
+                    <Col xs={6} className="text-center">
+                      <Button
+                        variant={showTodo ? 'success' : 'secondary'}
+                        onClick={handleToggleTodo}
+                        className="toggle-btn w-100"
+                      >
+                        To-Do
+                      </Button>
+                    </Col>
+                    <Col xs={6} className="text-center">
+                      <Button
+                        variant={showDone ? 'danger' : 'secondary'}
+                        onClick={handleToggleDone}
+                        className="toggle-btn w-100"
+                      >
+                        Done
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              )}
+              {(!showTodo && hasCompletedItems) && (
+                <Row className="justify-content-center mt-3">
+                  <Col xs={12} className="text-center">
+                    <Button
+                      variant="danger"
+                      onClick={clearCompletedItems}
+                      className="w-100"
+                    >
+                      Clear Done List
+                    </Button>
+                  </Col>
+                </Row>
+              )}
+              <TodoList
+                todos={filteredTodos}
+                deleteItem={deleteItem}
+                toggleComplete={toggleComplete}
+                darkMode={darkMode}
+                showTodo={showTodo}
+                showDone={showDone}
+              />
             </Card.Body>
           </Card>
         </Col>

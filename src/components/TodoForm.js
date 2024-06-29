@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, InputGroup } from 'react-bootstrap';
 
 const TodoForm = ({ addItem }) => {
   const [task, setTask] = useState('');
@@ -14,18 +14,20 @@ const TodoForm = ({ addItem }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formTask">
-        <Form.Label>New Task</Form.Label>
+      <InputGroup className="mb-3">
         <Form.Control
           type="text"
+          placeholder="Enter new task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           required
         />
-      </Form.Group>
-      <Button variant="primary" type="submit" className="mt-3">
-        Add Task
-      </Button>
+        {task.trim() && (
+          <Button type="submit" variant="success">
+            Add Task
+          </Button>
+        )}
+      </InputGroup>
     </Form>
   );
 };
