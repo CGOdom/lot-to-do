@@ -110,11 +110,11 @@ const Todo = ({ darkMode }) => {
                     </Col>
                     <Col xs={6} className="text-center">
                       <Button
-                        variant={showDone ? 'danger' : 'secondary'}
+                        variant={showDone ? 'primary' : 'secondary'}
                         onClick={handleToggleDone}
                         className="toggle-btn w-100"
                       >
-                        Done
+                        Completed
                       </Button>
                     </Col>
                   </Row>
@@ -128,7 +128,7 @@ const Todo = ({ darkMode }) => {
                       onClick={clearCompletedItems}
                       className="w-100"
                     >
-                      Clear Done List
+                      Clear Completed List
                     </Button>
                   </Col>
                 </Row>

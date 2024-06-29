@@ -18,10 +18,12 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
           }
 
           const textStyle = {
-            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? 'red' : darkMode ? 'white' : 'black',
+            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? '' : darkMode ? 'white' : 'black',
             textDecoration: todo.completed ? 'line-through' : 'none',
             flex: 1
           };
+
+          const textClass = showDone && todo.completed ? 'text-primary' : '';
 
           return (
             <Col key={todo.id} className={colClass}>
@@ -38,7 +40,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
                     className="me-3"
                     style={{ transform: 'scale(1.5)' }} // Increase checkbox size
                   />
-                  <span style={textStyle}>
+                  <span className={textClass} style={textStyle}>
                     {todo.text}
                   </span>
                 </div>
