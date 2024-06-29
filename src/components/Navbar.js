@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import logo from './Images/todologo.png'; // Make sure the path is correct
+import logo from '.\Images\todologo.png'; // Make sure the path is correct
 
 const MyNavbar = ({ darkMode, toggleDarkMode }) => {
   return (
