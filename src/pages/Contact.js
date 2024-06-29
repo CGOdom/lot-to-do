@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,10 +21,10 @@ const Contact = () => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className={`mt-5 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row className="justify-content-center">
         <Col md={8}>
-          <Card className="p-4 shadow-sm">
+          <Card className={`p-4 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
             <Card.Body>
               <h2 className="mb-4 text-center">Contact Us</h2>
               <Form onSubmit={handleSubmit}>
@@ -36,6 +36,7 @@ const Contact = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
+                    className={darkMode ? 'bg-dark text-white' : ''}
                   />
                 </Form.Group>
 
@@ -47,6 +48,7 @@ const Contact = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
+                    className={darkMode ? 'bg-dark text-white' : ''}
                   />
                 </Form.Group>
 
@@ -58,6 +60,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    className={darkMode ? 'bg-dark text-white' : ''}
                   />
                 </Form.Group>
 
@@ -69,6 +72,7 @@ const Contact = () => {
                     value={formData.comments}
                     onChange={handleChange}
                     rows={3}
+                    className={darkMode ? 'bg-dark text-white' : ''}
                   />
                 </Form.Group>
 

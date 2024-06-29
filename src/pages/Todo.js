@@ -5,7 +5,7 @@ import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 import './Todo.css';
 
-const Todo = () => {
+const Todo = ({ darkMode }) => {
   const [todos, setTodos] = useState(getInitialState());
   const [filter, setFilter] = useState('all');
 
@@ -39,10 +39,10 @@ const Todo = () => {
   });
 
   return (
-    <Container className="mt-5">
+    <Container className={`mt-5 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row className="justify-content-center">
         <Col md={8}>
-          <Card className="p-4 shadow-sm">
+          <Card className={`p-4 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
             <Card.Body>
               <h2 className="mb-4 text-center">To-Do List</h2>
               <ButtonGroup className="mb-3 w-100">
@@ -51,7 +51,7 @@ const Todo = () => {
                 <Button variant={filter === 'done' ? 'primary' : 'secondary'} onClick={() => setFilter('done')}>Done</Button>
               </ButtonGroup>
               <TodoForm addItem={addItem} />
-              <TodoList todos={filteredTodos} deleteItem={deleteItem} toggleComplete={toggleComplete} />
+              <TodoList todos={filteredTodos} deleteItem={deleteItem} toggleComplete={toggleComplete} darkMode={darkMode} />
             </Card.Body>
           </Card>
         </Col>
