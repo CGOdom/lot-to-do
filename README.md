@@ -9,7 +9,7 @@ Hosting Link: https://cgodom.github.io/lot-to-do/
 Caden Gene Odom
 
 # Overview/Description:
-The Task Management App is a web application designed to help users manage their tasks efficiently. Users can create, check off, and delete tasks, and personalize their experience with features like dark mode. Built with React and Redux, the app offers a clean, user-friendly interface and robust task tracking capabilities, ensuring that users can stay organized and productive.
+The Task Management App is a web application designed to help users manage their tasks efficiently. Users can create, check off, and delete tasks, and personalize their experience with features like dark mode. Built with React and Bootstrap, the app offers a clean, user-friendly interface and robust task tracking capabilities, ensuring that users can stay organized and productive.
 
 
 # User Types and User Stories:
@@ -39,7 +39,6 @@ The Task Management App is a web application designed to help users manage their
 
 # Technologies Used:
   - **React**: Frontend library for building user interfaces.
-  - **Redux**: State management library for React.
   - **React Bootstrap**: Bootstrap components for React.
   - **HTML5**: Markup language for structuring web content.
   - **CSS3**: Styling language for designing web content.
@@ -60,11 +59,6 @@ The Task Management App is a web application designed to help users manage their
     - **TaskForm.js** - Container component for the task form.
     - **TaskFormView.js** - Presentational component for the task form UI.
     - **Other components...**
-- # redux/
-    - **actions/** - Contains action creators.
-    - **reducers/** - Contains reducers.
-    - **selectors/** - Contains selectors.
 - # App.js:
 (Main application file)
 - # Other files...
-
