@@ -13,11 +13,11 @@ const Contact = ({ darkMode }) => {
 
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add('bg-dark-mode');
-      document.body.classList.remove('bg-light-mode');
+      document.body.classList.add('bg-dark');
+      document.body.classList.remove('bg-light');
     } else {
-      document.body.classList.remove('bg-dark-mode');
-      document.body.classList.add('bg-light-mode');
+      document.body.classList.remove('bg-dark');
+      document.body.classList.add('bg-light');
     }
   }, [darkMode]);
 
@@ -56,10 +56,10 @@ const Contact = ({ darkMode }) => {
   };
 
   return (
-    <Container fluid className={`pt-3 ${darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}`}>
+    <Container fluid className={`pt-3 ${darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}`}>
       <Row className="justify-content-center">
         <Col md={8}>
-          <Card className={`p-4 shadow-sm ${darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}`}>
+          <Card className={`p-4 shadow-sm ${darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}`}>
             <Card.Body>
               <h2 className="mb-4 text-center">Contact Us</h2>
               <Form onSubmit={handleSubmit}>
@@ -71,7 +71,7 @@ const Contact = ({ darkMode }) => {
                     onChange={handleChange}
                     placeholder="Your first name..."
                     required
-                    className={darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}
+                    className={darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}
                   />
                 </Form.Group>
 
@@ -83,7 +83,7 @@ const Contact = ({ darkMode }) => {
                     onChange={handleChange}
                     placeholder="Last name..."
                     required
-                    className={darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}
+                    className={darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}
                   />
                 </Form.Group>
 
@@ -95,7 +95,7 @@ const Contact = ({ darkMode }) => {
                     onChange={handleChange}
                     placeholder="Email..."
                     required
-                    className={darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}
+                    className={darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}
                   />
                 </Form.Group>
 
@@ -107,7 +107,7 @@ const Contact = ({ darkMode }) => {
                     onChange={handleChange}
                     rows={3}
                     placeholder="Comments..."
-                    className={darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-dark'}
+                    className={darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}
                   />
                 </Form.Group>
 
