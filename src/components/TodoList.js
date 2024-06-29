@@ -1,7 +1,8 @@
 import React from 'react';
 import { ListGroup, Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { XCircleFill } from 'react-bootstrap-icons';
 
-const TodoList = ({ todos, deleteItem, toggleComplete, darkMode }) => {
+const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showDone }) => {
   return (
     <Container className={`todo-list mt-4 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row>
@@ -16,25 +17,37 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode }) => {
             colClass = "col-md-6"; // Four or more items, each item half width on medium and larger screens
           }
 
+          const textStyle = {
+            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? 'red' : darkMode ? 'white' : 'black',
+            textDecoration: todo.completed ? 'line-through' : 'none',
+            flex: 1
+          };
+
           return (
             <Col key={todo.id} className={colClass}>
-              <ListGroup.Item className={`d-flex justify-content-between align-items-center py-3 ${darkMode ? 'bg-dark text-white' : ''}`}>
+              <ListGroup.Item
+                className={`d-flex justify-content-between align-items-center py-3 ${
+                  darkMode ? 'bg-dark text-white' : ''
+                }`}
+              >
                 <div className="d-flex align-items-center">
                   <Form.Check
                     type="checkbox"
                     checked={todo.completed}
                     onChange={() => toggleComplete(todo.id)}
                     className="me-3"
+                    style={{ transform: 'scale(1.5)' }} // Increase checkbox size
                   />
-                  <span style={{ textDecoration: todo.completed ? 'line-through' : 'none', flex: 1 }}>
+                  <span style={textStyle}>
                     {todo.text}
                   </span>
                 </div>
                 <Button
-                  variant="danger"
+                  variant="link"
                   onClick={() => deleteItem(todo.id)}
+                  className="p-0 text-danger"
                 >
-                  Delete
+                  <XCircleFill size={20} /> {/* Decreased size of the X icon */}
                 </Button>
               </ListGroup.Item>
             </Col>

@@ -6,7 +6,7 @@ import Contact from './pages/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -26,6 +26,6 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
