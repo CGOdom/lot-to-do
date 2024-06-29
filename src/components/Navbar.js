@@ -11,8 +11,7 @@ const MyNavbar = ({ darkMode, toggleDarkMode }) => {
             <img
               src={`${process.env.PUBLIC_URL}/Images/todologo.png`}
               alt="Lot-To-Do Logo"
-              width="45"
-              height="45"
+              style={{ width: '150px', height: 'auto' }}
               className="d-inline-block align-top"
             />
           </Navbar.Brand>

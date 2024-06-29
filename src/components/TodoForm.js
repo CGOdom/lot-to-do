@@ -17,7 +17,7 @@ const TodoForm = ({ addItem }) => {
       <InputGroup className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter new task"
+          placeholder="Got a lot to do?"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           required
