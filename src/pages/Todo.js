@@ -6,88 +6,90 @@ import TodoList from '../components/TodoList';
 import './Todo.css';
 
 const Todo = ({ darkMode }) => {
+  const getInitialState = () => {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  };
+
   const [todos, setTodos] = useState(getInitialState());
-  const [showTodo, setShowTodo] = useState(true);
-  const [showDone, setShowDone] = useState(true);
+  const [showTodo, setShowTodo] = useState(false);
+  const [showDone, setShowDone] = useState(false);
   const [hasCompletedItems, setHasCompletedItems] = useState(false);
   const [hasUncompletedItems, setHasUncompletedItems] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-    setHasCompletedItems(todos.some(todo => todo.completed));
-    setHasUncompletedItems(todos.some(todo => !todo.completed));
+    updateItemStates(todos);
   }, [todos]);
 
   useEffect(() => {
-    document.body.classList.add('bg-dark');
-    return () => {
+    if (darkMode) {
+      document.body.classList.add('bg-dark');
+    } else {
       document.body.classList.remove('bg-dark');
-    };
-  }, []);
-
-  function getInitialState() {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : [];
-  }
+    }
+  }, [darkMode]);
 
   const addItem = (text) => {
-    setShowTodo(true);
-    setShowDone(true);
-    setTodos([{ id: nanoid(), text, completed: false }, ...todos]);
+    const newTodos = [{ id: nanoid(), text, completed: false }, ...todos];
+    setTodos(newTodos);
   };
 
   const deleteItem = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
   };
 
   const toggleComplete = (id) => {
-    setTodos(todos.map((todo) =>
+    const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    );
+
+    setTodos(updatedTodos);
+    updateItemStates(updatedTodos);
   };
 
   const clearCompletedItems = () => {
-    setTodos(todos.filter(todo => !todo.completed));
+    const newTodos = todos.filter(todo => !todo.completed);
+    setTodos(newTodos);
   };
 
   const handleToggleTodo = () => {
-    setShowTodo(prev => {
-      const newState = !prev;
-      if (!newState && !showDone) {
-        setShowDone(true);
-      }
-      return newState;
-    });
+    setShowTodo(prev => !prev);
+    if (!showTodo) {
+      setShowDone(false);
+    }
   };
 
   const handleToggleDone = () => {
-    setShowDone(prev => {
-      const newState = !prev;
-      if (!newState && !showTodo) {
-        setShowTodo(true);
-      }
-      return newState;
-    });
+    setShowDone(prev => !prev);
+    if (!showDone) {
+      setShowTodo(false);
+    }
   };
 
   const filteredTodos = todos.filter(todo => {
-    if (!showTodo && !todo.completed) return false;
-    if (!showDone && todo.completed) return false;
-    return true;
+    if (showTodo && !todo.completed) return true;
+    if (showDone && todo.completed) return true;
+    if (!showTodo && !showDone) return true;
+    return false;
   });
 
-  useEffect(() => {
-    if (hasUncompletedItems && !hasCompletedItems) {
-      setShowTodo(true);
+  const updateItemStates = (updatedTodos) => {
+    const hasCompleted = updatedTodos.some(todo => todo.completed);
+    const hasUncompleted = updatedTodos.some(todo => !todo.completed);
+
+    setHasCompletedItems(hasCompleted);
+    setHasUncompletedItems(hasUncompleted);
+
+    if (!hasCompleted) {
       setShowDone(false);
-    } else if (hasCompletedItems && !hasUncompletedItems) {
-      setShowTodo(false);
-      setShowDone(true);
-    } else {
-      setShowTodo(true);
-      setShowDone(true);
     }
-  }, [hasCompletedItems, hasUncompletedItems]);
+
+    if (!hasUncompleted) {
+      setShowTodo(false);
+    }
+  };
 
   return (
     <Container fluid className={`pt-3 ${darkMode ? 'bg-dark text-white' : ''}`}>
@@ -101,7 +103,7 @@ const Todo = ({ darkMode }) => {
                   <Row className="justify-content-center">
                     <Col xs={6} className="text-center">
                       <Button
-                        variant={showTodo ? 'success' : 'secondary'}
+                        variant={showTodo ? 'success' : 'outline-success'}
                         onClick={handleToggleTodo}
                         className="toggle-btn w-100"
                       >
@@ -110,7 +112,7 @@ const Todo = ({ darkMode }) => {
                     </Col>
                     <Col xs={6} className="text-center">
                       <Button
-                        variant={showDone ? 'primary' : 'secondary'}
+                        variant={showDone ? 'primary' : 'outline-primary'}
                         onClick={handleToggleDone}
                         className="toggle-btn w-100"
                       >
@@ -120,7 +122,7 @@ const Todo = ({ darkMode }) => {
                   </Row>
                 </Form>
               )}
-              {(!showTodo && hasCompletedItems) && (
+              {((!hasUncompletedItems && hasCompletedItems) || (showDone && !showTodo)) && (
                 <Row className="justify-content-center mt-3">
                   <Col xs={12} className="text-center">
                     <Button
