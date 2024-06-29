@@ -1,5 +1,5 @@
-Project 3 - Lot-To-Do
-# Task Management App
+# Project 3 - Lot-To-Do 
+Task Management App
 
 
 Hosting Link: https://cgodom.github.io/lot-to-do/
@@ -52,7 +52,7 @@ The Task Management App is a web application designed to help users manage their
 
 # Project Structure:
 
-  # Container Components:
+  # Container Components
   - **App.js**
       - Manages the overall application state and routing.
       - Coordinates the rendering of different views based on the route.
@@ -63,7 +63,7 @@ The Task Management App is a web application designed to help users manage their
       - Manages the state and logic for adding or editing todos.
       - Handles form submissions, including adding or updating todos.
 
-  # Presentational Components:
+  # Presentational Components
   - **Navbar.js**
       - Displays the navigation bar with links to different parts of the application.
   - **TodoList.js**
@@ -112,4 +112,3 @@ The Task Management App is a web application designed to help users manage their
         - **priority**: string
       - **isSubmitting**: A boolean indicating if the form is currently being submitted.
       - **error**: Stores any error message that occurs during form submission
-      
