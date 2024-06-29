@@ -21,8 +21,8 @@ const App = () => {
         <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<Navigate to="/list" />} />
-            <Route path="/list" element={<Todo darkMode={darkMode} />} />
+            <Route path="/" element={<Navigate to="/todo" />} />
+            <Route path="/todo" element={<Todo darkMode={darkMode} />} />
             <Route path="/contact" element={<Contact darkMode={darkMode} />} />
           </Routes>
         </div>
