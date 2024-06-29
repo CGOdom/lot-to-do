@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const MyNavbar = () => {
+const MyNavbar = ({ darkMode, toggleDarkMode }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>Lot-To-Do</Navbar.Brand>
@@ -19,6 +19,15 @@ const MyNavbar = () => {
               <Nav.Link>Contact</Nav.Link>
             </LinkContainer>
           </Nav>
+          <Form className="d-flex align-items-center">
+            <Form.Check
+              type="switch"
+              id="dark-mode-switch"
+              label="Dark Mode"
+              checked={darkMode}
+              onChange={toggleDarkMode}
+            />
+          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

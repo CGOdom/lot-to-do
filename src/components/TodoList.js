@@ -1,9 +1,9 @@
 import React from 'react';
 import { ListGroup, Button, Form, Container, Row, Col } from 'react-bootstrap';
 
-const TodoList = ({ todos, deleteItem, toggleComplete }) => {
+const TodoList = ({ todos, deleteItem, toggleComplete, darkMode }) => {
   return (
-    <Container className="todo-list mt-4">
+    <Container className={`todo-list mt-4 ${darkMode ? 'bg-dark text-white' : ''}`}>
       <Row>
         {todos.map((todo, index) => {
           let colClass = "col-12"; // Default to full width
@@ -18,7 +18,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete }) => {
 
           return (
             <Col key={todo.id} className={colClass}>
-              <ListGroup.Item className="d-flex justify-content-between align-items-center py-3">
+              <ListGroup.Item className={`d-flex justify-content-between align-items-center py-3 ${darkMode ? 'bg-dark text-white' : ''}`}>
                 <div className="d-flex align-items-center">
                   <Form.Check
                     type="checkbox"
