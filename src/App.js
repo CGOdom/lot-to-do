@@ -4,18 +4,20 @@ import MyNavbar from './components/Navbar';
 import Todo from './pages/Todo';
 import Contact from './pages/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.body.classList.toggle('bg-dark'); // Add or remove dark background for the body
+    document.body.classList.toggle('bg-dark-mode');
+    document.body.classList.toggle('bg-light-mode');
   };
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <div className={`App ${darkMode ? 'bg-dark text-white' : ''}`}>
+      <div className={`App ${darkMode ? 'bg-dark-mode' : 'bg-light-mode'}`}>
         <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <div className="container mt-3">
           <Routes>

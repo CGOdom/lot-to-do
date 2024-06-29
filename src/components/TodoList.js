@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListGroup, Button, Form, Container, Row, Col } from 'react-bootstrap';
-import { XCircleFill } from 'react-bootstrap-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showDone }) => {
   return (
@@ -18,12 +19,10 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
           }
 
           const textStyle = {
-            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? '' : darkMode ? 'white' : 'black',
+            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? 'lightblue' : darkMode ? 'white' : 'black',
             textDecoration: todo.completed ? 'line-through' : 'none',
             flex: 1
           };
-
-          const textClass = showDone && todo.completed ? 'text-primary' : '';
 
           return (
             <Col key={todo.id} className={colClass}>
@@ -40,7 +39,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
                     className="me-3"
                     style={{ transform: 'scale(1.5)' }} // Increase checkbox size
                   />
-                  <span className={textClass} style={textStyle}>
+                  <span style={textStyle}>
                     {todo.text}
                   </span>
                 </div>
@@ -49,7 +48,7 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
                   onClick={() => deleteItem(todo.id)}
                   className="p-0 text-danger"
                 >
-                  <XCircleFill size={20} /> {/* Decreased size of the X icon */}
+                  <FontAwesomeIcon icon={faTimes} size="lg" /> {/* Use FontAwesome X icon */}
                 </Button>
               </ListGroup.Item>
             </Col>
