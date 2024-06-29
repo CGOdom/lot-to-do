@@ -45,4 +45,48 @@ body {
   .toggle-btn {
     margin-top: 0;
   }
+
   
+  .btn-outline-success {
+    border-color: green;
+    color: green;
+  }
+  
+  .btn-outline-primary {
+    border-color: blue;
+    color: blue;
+  }
+
+  
+  /* Custom checkbox styles */
+.custom-checkbox .form-check-input {
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid green;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-checkbox .form-check-input:checked {
+  background-color: #0d6efd; /* Bootstrap primary color */
+  border-color: #0d6efd; /* Bootstrap primary color */
+}
+
+.custom-checkbox .form-check-input:focus {
+  border-color: green;
+  box-shadow: none;
+}
+
+/* Strikethrough and text color for completed items */
+.completed-item {
+  color: gray;
+  text-decoration: line-through;
+  text-decoration-color: #0b5ed7; /* Darker blue */
+  text-decoration-thickness: 4px; /* Bolder strikethrough */
+}
+
+/* Text color for uncompleted items */
+.uncompleted-item {
+  color: green;
+}

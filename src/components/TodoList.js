@@ -18,11 +18,15 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
             colClass = "col-md-6"; // Four or more items, each item half width on medium and larger screens
           }
 
-          const textStyle = {
-            color: showTodo && !todo.completed ? 'green' : showDone && todo.completed ? 'lightblue' : darkMode ? 'white' : 'black',
-            textDecoration: todo.completed ? 'line-through' : 'none',
-            flex: 1
-          };
+          const itemClass = todo.completed
+            ? 'completed-item'
+            : (!showTodo && !showDone)
+            ? 'uncompleted-item'
+            : showTodo && !todo.completed
+            ? 'uncompleted-item'
+            : showDone && todo.completed
+            ? 'completed-item'
+            : '';
 
           return (
             <Col key={todo.id} className={colClass}>
@@ -36,10 +40,10 @@ const TodoList = ({ todos, deleteItem, toggleComplete, darkMode, showTodo, showD
                     type="checkbox"
                     checked={todo.completed}
                     onChange={() => toggleComplete(todo.id)}
-                    className="me-3"
+                    className="me-3 custom-checkbox"
                     style={{ transform: 'scale(1.5)' }} // Increase checkbox size
                   />
-                  <span style={textStyle}>
+                  <span className={itemClass}>
                     {todo.text}
                   </span>
                 </div>

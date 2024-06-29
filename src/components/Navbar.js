@@ -33,6 +33,7 @@ const MyNavbar = ({ darkMode, toggleDarkMode }) => {
               label="Dark Mode"
               checked={darkMode}
               onChange={toggleDarkMode}
+              className={darkMode ? 'text-white' : 'text-dark'}
             />
           </Form>
         </Navbar.Collapse>
