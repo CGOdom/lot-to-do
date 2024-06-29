@@ -14,7 +14,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className={`App ${darkMode ? 'bg-dark text-white' : ''}`}>
         <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <div className="container mt-3">
